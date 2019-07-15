@@ -1,4 +1,3 @@
-import { getCustomerGrade } from '../customer-grade/get-customer-grage';
 import { Customer } from '../customer/customer';
 import { getPeriods } from '../movie/get-period';
 import { Movie } from '../movie/movie';
@@ -20,7 +19,9 @@ export function calcPricesFactory(
   );
 
   return function calcPrices(movie: Movie, customers: Customer[]): Price[] {
-    const periods = getPeriods(createPeriods, movie);
-    return customers.map(v => getCustomerGrade(v, origin).getPrice(periods));
+    const periods = getPeriods(movie, createPeriods);
+    return customers.map(customer => {
+      return movie.getPrice(customer, origin, periods);
+    });
   };
 }

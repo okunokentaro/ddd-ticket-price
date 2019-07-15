@@ -3,8 +3,8 @@ import { Periods } from '../period/periods';
 import { Movie } from './movie';
 
 export function getPeriods(
-  createPeriods: CreatePeriodsSignature,
   movie: Movie,
+  createPeriods: CreatePeriodsSignature,
 ): Periods {
   const { date } = movie;
   return createPeriods(date);

@@ -2,10 +2,7 @@ import { nationalHolidayDefinitions } from '../../../lib/national-holiday.defini
 import { Customer } from '../../customer/customer';
 import { getPeriods } from '../../movie/get-period';
 import { Movie } from '../../movie/movie';
-import {
-  createPeriodsFactory,
-  CreatePeriodsSignature,
-} from '../../period/create-periods-factory';
+import { createPeriodsFactory, CreatePeriodsSignature, } from '../../period/create-periods-factory';
 import { periodDefinitions } from '../../period/definitions/period.definitions';
 import { CinemaCitizenGrade } from './chinema-citizen-grade';
 
@@ -27,8 +24,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -40,8 +37,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -53,8 +50,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -66,8 +63,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -79,8 +76,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -92,8 +89,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -105,8 +102,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -118,8 +115,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -131,8 +128,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -144,8 +141,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -157,8 +154,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T14:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
@@ -170,8 +167,8 @@ describe('CinemaCitizenGrade', () => {
 
       const grade = new CinemaCitizenGrade(customer, new Date(date));
       const periods = getPeriods(
-        createPeriods,
         new Movie('ダミームービー', `${date}T21:00+0900`),
+        createPeriods,
       );
 
       const actual = grade.getPrice(periods);
