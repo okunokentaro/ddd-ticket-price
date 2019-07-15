@@ -5,7 +5,10 @@
     "url": "https://github.com/okunokentaro/ddd-ticket-price/issues"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
@@ -20,6 +23,6 @@
   },
   "scripts": {
     "start": "ts-node main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   }
 }
