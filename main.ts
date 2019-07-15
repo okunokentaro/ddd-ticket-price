@@ -7,6 +7,7 @@ import { ViewModel } from './src/models/presentation/view-model';
 
 function main() {
   const calcPrices = calcPricesFactory(
+    new Date(),
     periodDefinitions,
     nationalHolidayDefinitions,
   );

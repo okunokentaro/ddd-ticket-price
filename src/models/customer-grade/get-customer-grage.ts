@@ -4,11 +4,11 @@ import { customerGradeDefinitions } from './definition/customer-grade.definition
 import { GradeConstructorImpl } from './grade-constructor-impl';
 import { GradeImpl } from './grade-impl';
 
-export function getCustomerGrade(customer: Customer): GradeImpl {
+export function getCustomerGrade(customer: Customer, origin: Date): GradeImpl {
   const result = customerGradeDefinitions.reduce(
     (acc: GradeImpl | null, Ctor: GradeConstructorImpl): GradeImpl | null => {
       try {
-        return new Ctor(customer, new Date());
+        return new Ctor(customer, origin);
       } catch (e) {
         // Assertion Error の場合
         // 次の Grade 優先順位に定義された constructor を用いてインスタンス生成に try
