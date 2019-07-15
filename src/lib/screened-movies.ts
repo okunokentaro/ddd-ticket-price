@@ -2,7 +2,7 @@ import { BakuonMovie } from '../models/bakuon-movie/movie/bakuon-movie';
 import { Movie, } from '../models/core/movie/movie';
 import { Movies } from '../models/core/movie/movies';
 import { SpecialMovie } from '../models/special-movie/movie/special-movie';
-import { ThreeDimensionalMovie } from '../models/core/movie/three-dimensional-movie';
+import { ThreeDimensionalMovie } from '../models/three-dementions-movie/movie/three-dimensional-movie';
 
 export const screenedMovies = new Movies([
   new SpecialMovie('特別興行', '2019-07-15T14:00+0900'),

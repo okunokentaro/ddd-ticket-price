@@ -9,6 +9,7 @@ import { periodDefinitions } from './src/models/ordinary-movie/period/period.def
 import { ViewModel } from './src/models/presentation/view-model';
 import { customerGradeDefinitions as specialCustomerGradeDefinitions } from './src/models/special-movie/customer-grade/customer-grade.definitions';
 import { createSpecialMovieFactory } from './src/models/special-movie/movie/create-special-movie-factory';
+import { createThreeDimensionalMovieFactory } from './src/models/three-dementions-movie/movie/create-three-dimensional-movie-factory';
 
 function main(origin: Date) {
   const createMovie = createMovieFactory(
@@ -18,6 +19,11 @@ function main(origin: Date) {
   );
   const createBakuonMovie = createBakuonMovieFactory(
     bakuonMoviePeriodDefinitions,
+    nationalHolidayDefinitions,
+    customerGradeDefinitions,
+  );
+  const createThreeDimensionalMovie = createThreeDimensionalMovieFactory(
+    periodDefinitions,
     nationalHolidayDefinitions,
     customerGradeDefinitions,
   );
@@ -32,11 +38,20 @@ function main(origin: Date) {
     'トイ・ストーリー 4 爆音',
     '2019-07-15T21:00+0900',
   );
+  const threeDimensionalMovie = createThreeDimensionalMovie(
+    'トイ・ストーリー 4 3D',
+    '2019-07-15T21:00+0900',
+  );
   const specialMovie = createSpecialMovie(
     'トイ・ストーリー 4 特別興行',
     '2019-07-15T12:00+0900',
   );
-  const customers = [new Customer('1990-05-10', 'Male', 'NoAttributes')];
+  const customers = [
+    new Customer('1990-05-10', 'Male', 'NoAttributes', []),
+    new Customer('1990-05-10', 'Male', 'NoAttributes', [
+      'ThreeDimensionalGlasses',
+    ]),
+  ];
 
   const prices = calcPrices(origin, movie, customers);
   const viewModel = new ViewModel(movie, prices);
@@ -45,6 +60,17 @@ function main(origin: Date) {
   const bakuonPrices = calcPrices(origin, bakuonMovie, customers);
   const bakuonViewModel = new ViewModel(bakuonMovie, bakuonPrices);
   bakuonViewModel.print();
+
+  const threeDimensionalPrices = calcPrices(
+    origin,
+    threeDimensionalMovie,
+    customers,
+  );
+  const threeDimensionalViewModel = new ViewModel(
+    threeDimensionalMovie,
+    threeDimensionalPrices,
+  );
+  threeDimensionalViewModel.print();
 
   const specialMoviePrices = calcPrices(origin, specialMovie, customers);
   const specialViewModel = new ViewModel(specialMovie, specialMoviePrices);
