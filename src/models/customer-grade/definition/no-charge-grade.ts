@@ -1,7 +1,7 @@
 import { assertionError } from '../../../utils/assertion-error';
 import { Customer } from '../../customer/customer';
 import { PeriodImpl } from '../../period/period-impl';
-import { Price } from '../../price';
+import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
 export class NoChargeGrade implements GradeImpl {

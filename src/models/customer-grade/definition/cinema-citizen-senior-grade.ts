@@ -1,6 +1,6 @@
 import { assertionError } from '../../../utils/assertion-error';
 import { Customer } from '../../customer/customer';
-import { Price } from '../../price';
+import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
 export class CinemaCitizenSeniorGrade implements GradeImpl {

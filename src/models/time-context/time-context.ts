@@ -2,10 +2,7 @@ import { NationalHolidayCollection } from '../national-holiday/national-holiday-
 import { WDay, weekday } from '../w-day/w-day';
 
 export class TimeContext {
-  constructor(
-    private readonly reservationDate: Date,
-    private readonly nationalHolidayCollection: NationalHolidayCollection,
-  ) {}
+  constructor(private readonly reservationDate: Date) {}
 
   /**
    * 日付を返却
@@ -25,16 +22,21 @@ export class TimeContext {
   /**
    * 国民の祝日・休日のとき真
    */
-  get isNationalHoliday(): boolean {
+  getIsNationalHoliday(
+    nationalHolidayMaster: NationalHolidayCollection,
+  ): boolean {
     const unixTime = this.getAsUnixTime();
-    return this.nationalHolidayCollection.withinNationalHoliday(unixTime);
+    return nationalHolidayMaster.withinNationalHoliday(unixTime);
   }
 
   /**
    * 土日祝のとき真
    */
-  get isHoliday(): boolean {
-    return this.isNationalHoliday || !this.isWeekday;
+  getIsHoliday(nationalHolidayMaster: NationalHolidayCollection): boolean {
+    return [
+      this.getIsNationalHoliday(nationalHolidayMaster),
+      !this.isWeekday,
+    ].some(v => v);
   }
 
   /**

@@ -1,10 +1,10 @@
-import { getCustomerGrade } from './customer-grade/get-customer-grage';
-import { Customer } from './customer/customer';
-import { getPeriods } from './movie/get-period';
-import { Movie } from './movie/movie';
-import { NationalHolidayCollection } from './national-holiday/national-holiday-collection';
-import { createPeriodsFactory } from './period/create-periods-factory';
-import { PeriodConstructorImpl } from './period/period-constructor-impl';
+import { getCustomerGrade } from '../customer-grade/get-customer-grage';
+import { Customer } from '../customer/customer';
+import { getPeriods } from '../movie/get-period';
+import { Movie } from '../movie/movie';
+import { NationalHolidayCollection } from '../national-holiday/national-holiday-collection';
+import { createPeriodsFactory } from '../period/create-periods-factory';
+import { PeriodConstructorImpl } from '../period/period-constructor-impl';
 import { Price } from './price';
 
 type CalcPriceSignature = (movie: Movie, customers: Customer[]) => Price[];

@@ -1,90 +1,60 @@
-import { nationalHolidayDefinitions } from '../../lib/national-holiday.definitions';
+import { nationalHolidayDefinitions as defs } from '../../lib/national-holiday.definitions';
+import { makeTimeContext } from './make-time-context';
 import { TimeContext } from './time-context';
 
 describe('TimeContext', () => {
   describe('#isWeekday', () => {
-    test('平日は真', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-16T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isWeekday).toEqual(true);
-    });
+    const params: [string, [number, boolean], string][] = [
+      ['2019-07-16T19:00+0900', [2, true], '平日は真'],
+      ['2019-07-15T19:00+0900', [1, true], '祝日・休日でも平日ならば真'],
+      ['2019-07-13T19:00+0900', [6, false], '土曜は偽'],
+      ['2019-07-14T19:00+0900', [0, false], '日曜は偽'],
+    ];
 
-    test('祝日・休日でも平日ならば真', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-15T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isWeekday).toEqual(true);
-    });
-
-    test('土曜は偽', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-13T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isWeekday).toEqual(false);
-    });
-
-    test('日曜は偽', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-14T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isWeekday).toEqual(false);
+    params.forEach(([str, expected, name]) => {
+      test(name, () => {
+        const actual = makeTimeContext(str);
+        expect([new Date(str).getDay(), actual.isWeekday]).toEqual(expected);
+      });
     });
   });
 
-  describe('#isNationalHoliday', () => {
-    test('祝日は真', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-15T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isNationalHoliday).toEqual(true);
-    });
+  describe('#getIsNationalHoliday()', () => {
+    const params: [string, [number, boolean], string][] = [
+      ['2019-07-15T19:00+0900', [1, true], '月曜祝日は真'],
+      ['2019-08-11T19:00+0900', [0, true], '日曜祝日は真'],
+      ['2019-07-13T19:00+0900', [6, false], '土曜は偽'],
+      ['2019-07-14T19:00+0900', [0, false], '日曜は偽'],
+      ['2019-07-16T19:00+0900', [2, false], '平日は偽'],
+    ];
 
-    test('日曜は偽', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-14T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isNationalHoliday).toEqual(false);
-    });
-
-    test('平日は偽', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-16T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isNationalHoliday).toEqual(false);
+    params.forEach(([str, expected, name]) => {
+      test(name, () => {
+        const actual = makeTimeContext(str);
+        expect([
+          new Date(str).getDay(),
+          actual.getIsNationalHoliday(defs),
+        ]).toEqual(expected);
+      });
     });
   });
 
-  describe('#isHoliday', () => {
-    test('祝日は真', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-15T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isHoliday).toEqual(true);
-    });
+  describe('#getIsHoliday()', () => {
+    const params: [string, [number, boolean], string][] = [
+      ['2019-07-13T19:00+0900', [6, true], '土曜は真'],
+      ['2019-07-14T19:00+0900', [0, true], '日曜は真'],
+      ['2019-08-11T19:00+0900', [0, true], '日曜祝日は真'],
+      ['2019-07-15T19:00+0900', [1, true], '月曜祝日は真'],
+      ['2019-07-16T19:00+0900', [2, false], '平日は偽'],
+    ];
 
-    test('日曜は真', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-14T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isHoliday).toEqual(true);
-    });
-
-    test('平日は偽', () => {
-      const actual = new TimeContext(
-        new Date('2019-07-16T19:00+0900'),
-        nationalHolidayDefinitions,
-      );
-      expect(actual.isHoliday).toEqual(false);
+    params.forEach(([str, expected, name]) => {
+      test(name, () => {
+        const actual = makeTimeContext(str);
+        expect([new Date(str).getDay(), actual.getIsHoliday(defs)]).toEqual(
+          expected,
+        );
+      });
     });
   });
 });

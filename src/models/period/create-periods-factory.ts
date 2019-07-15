@@ -15,15 +15,12 @@ export function createPeriodsFactory(
   nationalHolidayDefinitions: NationalHolidayCollection,
 ): CreatePeriodsSignature {
   return function createPeriods(dateStr: string): PeriodImpl[] {
-    const context = new TimeContext(
-      new Date(dateStr),
-      nationalHolidayDefinitions,
-    );
+    const context = new TimeContext(new Date(dateStr));
 
     const result = periodDefinitions.reduce(
       (acc: PeriodImpl[], Ctor: PeriodConstructorImpl): PeriodImpl[] => {
         try {
-          const period = new Ctor(context);
+          const period = new Ctor(context, nationalHolidayDefinitions);
           return acc.concat(period);
         } catch (e) {
           // Assertion Error の場合

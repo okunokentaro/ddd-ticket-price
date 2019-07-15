@@ -1,5 +1,5 @@
 import { Movie } from '../movie/movie';
-import { Price } from '../price';
+import { Price } from '../price/price';
 
 function priceToString(price: Price): string {
   return `¥${price.valueOf().toLocaleString()}`;

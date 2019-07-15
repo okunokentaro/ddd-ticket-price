@@ -8,7 +8,7 @@ import { WeekDayPeriod } from '../../period/definitions/week-day-period';
 import { everyMatchPeriods } from '../../period/every-match-periods';
 import { PeriodImpl } from '../../period/period-impl';
 import { someMatchPeriods } from '../../period/some-match-periods';
-import { Price } from '../../price';
+import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
 export class StudentGrade implements GradeImpl {
