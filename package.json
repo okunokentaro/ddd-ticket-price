@@ -1,0 +1,24 @@
+{
+  "name": "ddd-ticket-price",
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/okunokentaro/ddd-ticket-price/issues"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "homepage": "https://github.com/okunokentaro/ddd-ticket-price#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okunokentaro/ddd-ticket-price.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
