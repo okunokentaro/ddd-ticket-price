@@ -1,5 +1,16 @@
+class Price {}
+
+function calcPrice(): Price {
+  return new Price();
+}
+
+function printPrice(price: Price) {
+  console.log(price);
+}
+
 function main() {
-  console.log('main');
+  const price = calcPrice();
+  printPrice(price);
 }
 
 main();
