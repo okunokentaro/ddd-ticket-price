@@ -5,9 +5,9 @@ import { Movie } from './src/models/movie/movie';
 import { periodDefinitions } from './src/models/period/definitions/period.definitions';
 import { ViewModel } from './src/models/presentation/view-model';
 
-function main() {
+function main(origin: Date) {
   const calcPrices = calcPricesFactory(
-    new Date(),
+    origin,
     periodDefinitions,
     nationalHolidayDefinitions,
   );
@@ -20,4 +20,4 @@ function main() {
   viewModel.print();
 }
 
-main();
+main(new Date());
