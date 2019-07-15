@@ -28,7 +28,7 @@ function main(origin: Date) {
     customerGradeDefinitions,
   );
   const createSpecialMovie = createSpecialMovieFactory(
-    bakuonMoviePeriodDefinitions,
+    periodDefinitions,
     nationalHolidayDefinitions,
     specialCustomerGradeDefinitions,
   );
