@@ -7,18 +7,18 @@ import { createPeriodsFactory } from '../period/create-periods-factory';
 import { PeriodConstructorImpl } from '../period/period-constructor-impl';
 import { Price } from './price';
 
-type CalcPriceSignature = (movie: Movie, customers: Customer[]) => Price[];
+type CalcPricesSignature = (movie: Movie, customers: Customer[]) => Price[];
 
 export function calcPricesFactory(
   periodDefinitions: PeriodConstructorImpl[],
   nationalHolidayDefinitions: NationalHolidayCollection,
-): CalcPriceSignature {
+): CalcPricesSignature {
   const createPeriods = createPeriodsFactory(
     periodDefinitions,
     nationalHolidayDefinitions,
   );
 
-  return function calcPrice(movie: Movie, customers: Customer[]): Price[] {
+  return function calcPrices(movie: Movie, customers: Customer[]): Price[] {
     const periods = getPeriods(createPeriods, movie);
     return customers.map(v => getCustomerGrade(v).getPrice(periods));
   };
