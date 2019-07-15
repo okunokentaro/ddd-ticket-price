@@ -3,7 +3,7 @@ import { calcPricesFactory } from './src/models/calc-prices-factory';
 import { Customer } from './src/models/customer/customer';
 import { Movie } from './src/models/movie/movie';
 import { periodDefinitions } from './src/models/period/definitions/period.definitions';
-import { printPrices } from './src/models/print-prices';
+import { ViewModel } from './src/models/presentation/view-model';
 
 function main() {
   const calcPrices = calcPricesFactory(
@@ -15,7 +15,8 @@ function main() {
   const customers = [new Customer('1990-05-10', 'Male', 'NoAttributes')];
 
   const prices = calcPrices(movie, customers);
-  printPrices(prices);
+  const viewModel = new ViewModel(movie, prices);
+  viewModel.print();
 }
 
 main();
