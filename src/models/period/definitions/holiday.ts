@@ -4,8 +4,8 @@ import { TimeContext } from '../../time-context/time-context';
 import { lateShowBoundary } from '../period-constants';
 import { PeriodImpl } from '../period-impl';
 
-export class HolidayLatePeriod implements PeriodImpl {
-  readonly label: string = '土日祝レイト';
+export class Holiday implements PeriodImpl {
+  readonly label: string = '土日祝';
 
   constructor(
     context: TimeContext,
@@ -14,7 +14,7 @@ export class HolidayLatePeriod implements PeriodImpl {
     if (
       ![
         context.getIsHoliday(nationalHolidayMaster),
-        context.isLaterThan(lateShowBoundary),
+        context.isEarlierThan(lateShowBoundary),
       ].every(v => v)
     ) {
       throw assertionError();

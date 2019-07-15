@@ -1,7 +1,8 @@
 import { assertionErrorMessage } from '../../utils/assertion-error';
 import { Customer } from '../customer/customer';
 import { customerGradeDefinitions } from './definition/customer-grade.definitions';
-import { GradeConstructorImpl, GradeImpl } from './grade-impl';
+import { GradeConstructorImpl } from './grade-constructor-impl';
+import { GradeImpl } from './grade-impl';
 
 export function getCustomerGrade(customer: Customer): GradeImpl {
   const result = customerGradeDefinitions.reduce(

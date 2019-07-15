@@ -1,6 +1,5 @@
 import { assertionError } from '../../../utils/assertion-error';
 import { Customer } from '../../customer/customer';
-import { PeriodImpl } from '../../period/period-impl';
 import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
@@ -11,7 +10,7 @@ export class NoChargeGrade implements GradeImpl {
     }
   }
 
-  getPrice(periods: PeriodImpl[]): Price {
+  getPrice(): Price {
     return new Price(0); // 乳児は無料
   }
 }

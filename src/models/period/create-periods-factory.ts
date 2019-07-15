@@ -1,10 +1,11 @@
-import { NationalHolidayCollection } from '../national-holiday/national-holiday-collection';
-import { TimeContext } from '../time-context/time-context';
 import { assertionErrorMessage } from '../../utils/assertion-error';
+import { NationalHolidayCollection } from '../national-holiday/national-holiday-collection';
+import { makeTimeContext } from '../time-context/make-time-context';
 import { PeriodConstructorImpl } from './period-constructor-impl';
 import { PeriodImpl } from './period-impl';
+import { Periods } from './periods';
 
-export type CreatePeriodsSignature = (dateStr: string) => PeriodImpl[];
+export type CreatePeriodsSignature = (dateStr: string) => Periods;
 
 /**
  * 該当する料金期間 Period を該当する限り複数返却する
@@ -14,8 +15,8 @@ export function createPeriodsFactory(
   periodDefinitions: PeriodConstructorImpl[],
   nationalHolidayDefinitions: NationalHolidayCollection,
 ): CreatePeriodsSignature {
-  return function createPeriods(dateStr: string): PeriodImpl[] {
-    const context = new TimeContext(new Date(dateStr));
+  return function createPeriods(dateStr: string): Periods {
+    const context = makeTimeContext(dateStr);
 
     const result = periodDefinitions.reduce(
       (acc: PeriodImpl[], Ctor: PeriodConstructorImpl): PeriodImpl[] => {
@@ -38,6 +39,6 @@ export function createPeriodsFactory(
       throw new Error('Invalid time context');
     }
 
-    return result;
+    return new Periods(result);
   };
 }

@@ -1,12 +1,12 @@
-import { HolidayLatePeriod } from './holiday-late-period';
-import { HolidayPeriod } from './holiday-period';
-import { MovieDayPeriod } from './movie-day-period';
-import { WeekDayLatePeriod } from './week-day-late-period';
-import { WeekDayPeriod } from './week-day-period';
+import { Holiday } from './holiday';
+import { HolidayLate } from './holiday-late';
+import { MovieDay } from './movie-day';
+import { WeekDay } from './week-day';
+import { WeekDayLate } from './week-day-late';
 
 export type PeriodTypes =
-  | typeof HolidayPeriod
-  | typeof HolidayLatePeriod
-  | typeof WeekDayPeriod
-  | typeof MovieDayPeriod
-  | typeof WeekDayLatePeriod;
+  | typeof Holiday
+  | typeof HolidayLate
+  | typeof WeekDay
+  | typeof MovieDay
+  | typeof WeekDayLate;

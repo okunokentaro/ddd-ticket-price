@@ -50,7 +50,7 @@ export class TimeContext {
    * 0:00 - 23:59の範囲内において、自身は引数より遅い、または引数と等しいとき真
    */
   isLaterThan(relativeTimeSec: number): boolean {
-    return relativeTimeSec <= this.relativeTimeSec;
+    return !this.isEarlierThan(relativeTimeSec);
   }
 
   /**

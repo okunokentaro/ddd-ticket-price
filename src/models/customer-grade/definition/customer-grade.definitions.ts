@@ -1,7 +1,7 @@
+import { GradeConstructorImpl } from '../grade-constructor-impl';
 import { ChildGrade } from './child-grade';
 import { CinemaCitizenGrade } from './chinema-citizen-grade';
 import { CinemaCitizenSeniorGrade } from './cinema-citizen-senior-grade';
-import { GradeConstructorImpl } from '../grade-impl';
 import { HandicappedChildGrade } from './handicapped-child-grade';
 import { HandicappedGrade } from './handicapped-grade';
 import { MiddleStudentGrade } from './middle-student-grade';

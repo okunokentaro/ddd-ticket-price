@@ -57,4 +57,46 @@ describe('TimeContext', () => {
       });
     });
   });
+
+  describe('#isEarlierThan()', () => {
+    const params: [string, boolean][] = [
+      ['2019-07-15T00:00+0900', true],
+      ['2019-07-15T11:59+0900', true],
+      ['2019-07-15T12:00+0900', false],
+      ['2019-07-15T23:59+0900', false],
+      // 日付は関係なく判定
+      ['2019-07-16T00:00+0900', true],
+      ['2019-07-16T11:59+0900', true],
+      ['2019-07-16T12:00+0900', false],
+      ['2019-07-16T23:59+0900', false],
+    ];
+
+    params.forEach(([str, expected]) => {
+      test(str, () => {
+        const actual = makeTimeContext(str);
+        expect(actual.isEarlierThan(12 * 60 * 60)).toEqual(expected);
+      });
+    });
+  });
+
+  describe('#isLaterThan()', () => {
+    const params: [string, boolean][] = [
+      ['2019-07-15T00:00+0900', false],
+      ['2019-07-15T11:59+0900', false],
+      ['2019-07-15T12:00+0900', true],
+      ['2019-07-15T23:59+0900', true],
+      // 日付は関係なく判定
+      ['2019-07-16T00:00+0900', false],
+      ['2019-07-16T11:59+0900', false],
+      ['2019-07-16T12:00+0900', true],
+      ['2019-07-16T23:59+0900', true],
+    ];
+
+    params.forEach(([str, expected]) => {
+      test(str, () => {
+        const actual = makeTimeContext(str);
+        expect(actual.isLaterThan(12 * 60 * 60)).toEqual(expected);
+      });
+    });
+  });
 });

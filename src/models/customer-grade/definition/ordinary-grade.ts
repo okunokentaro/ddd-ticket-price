@@ -1,38 +1,36 @@
-import { HolidayLatePeriod } from '../../period/definitions/holiday-late-period';
-import { HolidayPeriod } from '../../period/definitions/holiday-period';
-import { MovieDayPeriod } from '../../period/definitions/movie-day-period';
-import { WeekDayLatePeriod } from '../../period/definitions/week-day-late-period';
-import { WeekDayPeriod } from '../../period/definitions/week-day-period';
-import { everyMatchPeriods } from '../../period/every-match-periods';
-import { PeriodImpl } from '../../period/period-impl';
-import { someMatchPeriods } from '../../period/some-match-periods';
+import { Holiday } from '../../period/definitions/holiday';
+import { HolidayLate } from '../../period/definitions/holiday-late';
+import { MovieDay } from '../../period/definitions/movie-day';
+import { WeekDay } from '../../period/definitions/week-day';
+import { WeekDayLate } from '../../period/definitions/week-day-late';
+import { Periods } from '../../period/periods';
 import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
 export class OrdinaryGrade implements GradeImpl {
-  getPrice(periods: PeriodImpl[]): Price {
-    if (everyMatchPeriods(periods, [MovieDayPeriod, HolidayPeriod])) {
+  getPrice(periods: Periods): Price {
+    if (periods.everyMatch([MovieDay, Holiday])) {
       return new Price(1100);
     }
-    if (everyMatchPeriods(periods, [MovieDayPeriod, HolidayLatePeriod])) {
+    if (periods.everyMatch([MovieDay, HolidayLate])) {
       return new Price(1100);
     }
-    if (everyMatchPeriods(periods, [MovieDayPeriod, WeekDayPeriod])) {
+    if (periods.everyMatch([MovieDay, WeekDay])) {
       return new Price(1100);
     }
-    if (everyMatchPeriods(periods, [MovieDayPeriod, WeekDayLatePeriod])) {
+    if (periods.everyMatch([MovieDay, WeekDayLate])) {
       return new Price(1100);
     }
-    if (someMatchPeriods(periods, [HolidayPeriod])) {
+    if (periods.someMatch([Holiday])) {
       return new Price(1800);
     }
-    if (someMatchPeriods(periods, [HolidayLatePeriod])) {
+    if (periods.someMatch([HolidayLate])) {
       return new Price(1300);
     }
-    if (someMatchPeriods(periods, [WeekDayPeriod])) {
+    if (periods.someMatch([WeekDay])) {
       return new Price(1800);
     }
-    if (someMatchPeriods(periods, [WeekDayLatePeriod])) {
+    if (periods.someMatch([WeekDayLate])) {
       return new Price(1300);
     }
 

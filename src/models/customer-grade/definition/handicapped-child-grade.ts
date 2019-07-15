@@ -1,6 +1,5 @@
 import { assertionError } from '../../../utils/assertion-error';
 import { Customer } from '../../customer/customer';
-import { PeriodImpl } from '../../period/period-impl';
 import { Price } from '../../price/price';
 import { GradeImpl } from '../grade-impl';
 
@@ -16,7 +15,7 @@ export class HandicappedChildGrade implements GradeImpl {
     }
   }
 
-  getPrice(periods: PeriodImpl[]): Price {
-    return new Price(0);
+  getPrice(): Price {
+    return new Price(900); // 一律
   }
 }

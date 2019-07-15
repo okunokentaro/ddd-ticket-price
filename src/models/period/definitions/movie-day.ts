@@ -1,13 +1,13 @@
 import { TimeContext } from '../../time-context/time-context';
 import { assertionError } from '../../../utils/assertion-error';
-import { lateShowBoundary } from '../period-constants';
+import { movieDay } from '../period-constants';
 import { PeriodImpl } from '../period-impl';
 
-export class WeekDayPeriod implements PeriodImpl {
-  readonly label: string = '平日';
+export class MovieDay implements PeriodImpl {
+  readonly label: string = '映画の日';
 
   constructor(context: TimeContext) {
-    if (!(context.isWeekday && context.isEarlierThan(lateShowBoundary))) {
+    if (![context.date === movieDay].every(v => v)) {
       throw assertionError();
     }
   }
