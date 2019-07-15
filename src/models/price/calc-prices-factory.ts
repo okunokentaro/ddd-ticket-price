@@ -10,6 +10,7 @@ import { Price } from './price';
 type CalcPricesSignature = (movie: Movie, customers: Customer[]) => Price[];
 
 export function calcPricesFactory(
+  origin: Date,
   periodDefinitions: PeriodConstructorImpl[],
   nationalHolidayDefinitions: NationalHolidayCollection,
 ): CalcPricesSignature {
@@ -20,6 +21,6 @@ export function calcPricesFactory(
 
   return function calcPrices(movie: Movie, customers: Customer[]): Price[] {
     const periods = getPeriods(createPeriods, movie);
-    return customers.map(v => getCustomerGrade(v).getPrice(periods));
+    return customers.map(v => getCustomerGrade(v, origin).getPrice(periods));
   };
 }
