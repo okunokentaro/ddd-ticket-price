@@ -12,13 +12,14 @@
   "homepage": "https://github.com/okunokentaro/ddd-ticket-price#readme",
   "keywords": [],
   "license": "ISC",
-  "main": "index.js",
+  "main": "index.ts",
   "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/okunokentaro/ddd-ticket-price.git"
   },
   "scripts": {
+    "start": "ts-node main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
