@@ -1,4 +1,4 @@
-import { NationalHolidayCollection } from '../models/national-holiday/national-holiday-collection';
+import { NationalHolidayCollection } from '../models/core/national-holiday/national-holiday-collection';
 
 /**
  * 内閣府発表 2019年祝日・休日マスターデータ

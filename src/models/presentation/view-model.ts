@@ -1,14 +1,14 @@
-import { Movie } from '../movie/movie';
-import { Price } from '../price/price';
+import { MovieImpl } from '../core/movie/movie-impl';
+import { FixedPrice } from '../core/price/fixed-price';
 
-function priceToString(price: Price): string {
+function priceToString(price: FixedPrice): string {
   return `¥${price.valueOf().toLocaleString()}`;
 }
 
 export class ViewModel {
   constructor(
-    private readonly movie: Movie,
-    private readonly prices: Price[],
+    private readonly movie: MovieImpl,
+    private readonly prices: FixedPrice[],
   ) {}
 
   print() {
